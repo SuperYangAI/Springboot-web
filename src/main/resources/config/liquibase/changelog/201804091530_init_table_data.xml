@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property name="now" value="now()" dbms="mysql"/>
+    <changeSet id="201804091530" author="WATER">
+        <insert tableName="sys_user">
+            <column name="user_code"></column>
+            <column name="user_name">admin</column>
+            <column name="password">a1d83431229cbda302fb33f24276c446</column>
+            <column name="telephone"></column>
+            <column name="create_time">now()</column>
+            <column name="create_by">1</column>
+            <column name="update_time">now()</column>
+            <column name="update_by">1</column>
+            <column name="del_flag">0</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

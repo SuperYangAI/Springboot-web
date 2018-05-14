@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property name="now" value="now()" dbms="mysql"/>
+    <changeSet id="201804091530" author="WATER">
+        <createTable tableName="sys_user">
+            <column name="id" type="int" autoIncrement="true"   remarks="主键"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="user_code" type="varchar(255)"   remarks="用户编码"  ><constraints nullable="true" /></column>
+            <column name="user_name" type="varchar(255)"   remarks="用户名"  ><constraints nullable="false" /></column>
+            <column name="password" type="varchar(255)"   remarks="用户密码"  ><constraints nullable="false" /></column>
+            <column name="telephone" type="varchar(255)"   remarks="电话号码"  ><constraints nullable="true" /></column>
+            <column name="email" type="varchar(255)"   remarks="电话号码"  ><constraints nullable="true" /></column>
+            <column name="create_time" type="datetime"   remarks="创建时间"  ><constraints nullable="false" /></column>
+            <column name="create_by" type="varchar(255)"   remarks="创建者"  ><constraints nullable="true" /></column>
+            <column name="update_time" type="datetime"   remarks="修改时间"  ><constraints nullable="false" /></column>
+            <column name="update_by" type="varchar(255)"   remarks="修改者"  ><constraints nullable="true" /></column>
+            <column name="remarks" type="varchar(255)"   remarks="备注"  ><constraints nullable="true" /></column>
+            <column name="del_flag" type="char(2)"   remarks="删除状态:1-删除，0-未删除"  ><constraints nullable="false" /></column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

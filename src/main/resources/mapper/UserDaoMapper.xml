@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.actec.pnmp.dao.UserDao">
+    <resultMap id="userMap" type="com.actec.pnmp.bean.sys.User">
+		<id property="id" column="id"/>
+		<result property="userCode" column="user_code"/>
+		<result property="userName" column="user_name"/>
+		<result property="password" column="password"/>
+		<result property="telephone" column="telephone"/>
+		<result property="email" column="email"/>
+		<result property="createDate" column="create_time"/>
+		<result property="createBy.id" javaType="Integer" column="create_by"/>
+		<result property="updateDate" column="update_time"/>
+		<result property="updateBy.id" javaType="Integer" column="update_by"/>
+		<result property="remarks" column="remarks"/>
+		<result property="delFlag" column="del_flag"/>
+    </resultMap>
+    
+    <sql id="queryCondition">
+        <where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="userCode != null and userCode != ''">
+				and user_code = #{userCode}
+			</if>
+			<if test="userName != null and userName != ''">
+				and user_name = #{userName}
+			</if>
+			<if test="password != null and password != ''">
+				and password = #{password}
+			</if>
+			<if test="telephone != null and telephone != ''">
+				and telephone = #{telephone}
+			</if>
+			<if test="email != null and email != ''">
+				and email = #{email}
+			</if>
+        </where>
+    </sql>
+    	
+    <select id="getByMap" parameterType="map" resultMap="userMap">
+    	SELECT * FROM sys_user
+		<include refid="queryCondition" />
+    </select>
+    
+    <select id="getById" parameterType="int" resultMap="userMap">
+    	SELECT * FROM sys_user WHERE id =#{id}
+    </select>
+
+	<select id="getByUserName" parameterType="String" resultMap="userMap">
+		select * from sys_user where user_name= #{userName}
+	</select>
+
+	<insert id="create" parameterType="com.actec.pnmp.bean.sys.User">
+        <selectKey resultType="int"  order="AFTER" keyProperty="id" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO sys_user(
+			id,
+			user_code,
+			user_name,
+			password,
+			telephone,
+			email,
+			create_time,
+			create_by,
+			update_time,
+			update_by,
+			remarks,
+			del_flag
+		)VALUES(
+			#{id},
+			#{userCode},
+			#{userName},
+			#{password},
+			#{telephone},
+			#{email},
+			now(),
+			#{createBy.id},
+			now(),
+			#{updateBy.id},
+			#{remarks},
+			#{delFlag}
+		)
+    </insert>
+    
+    <update id="update" parameterType="com.actec.pnmp.bean.sys.User">
+		UPDATE sys_user SET
+			user_code = #{userCode},
+			user_name = #{userName},
+			password = #{password},
+			telephone = #{telephone},
+			email = #{email},
+			update_time = now(),
+			update_by = #{updateBy.id},
+			remarks = #{remarks},
+			del_flag = 0
+		WHERE id = #{id}
+    </update>
+    
+    <!--<delete id="delete" parameterType="int">-->
+    	<!--DELETE FROM sys_user WHERE id = #{id}-->
+    <!--</delete>-->
+    
+</mapper>
