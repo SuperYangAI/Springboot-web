@@ -170,7 +170,7 @@
         <!--<appender-ref ref="file—jsonrpc"/>-->
     <!--</logger>-->
 
-    <logger name="com.actec.pnmp.dao" level="DEBUG"></logger>
+    <logger name="com.actec.ms.dao" level="DEBUG"></logger>
     <logger name="java.sql.PreparedStatement" value="DEBUG" />
     <logger name="java.sql.Connection" value="DEBUG" />
     <logger name="java.sql.Statement" value="DEBUG" />

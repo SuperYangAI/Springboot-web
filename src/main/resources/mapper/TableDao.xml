@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.actec.ms.dao.TableDao">
+	<delete id="deleteTableByName">
+		DROP TABLE `${tableName}`
+	</delete>
+	<delete id="deleteColumn">
+		ALTER TABLE `${tableName}` DROP COLUMN `${columnName}`
+	</delete>
+
+	<select id="tableNum" resultType="java.lang.Integer">
+		SELECT count( * )
+		FROM information_schema.TABLES
+		WHERE table_name = #{tableName}
+		AND TABLE_SCHEMA = 'pnmp';
+	</select>
+
+	<select id="allTableNames" resultType="String">
+		SELECT TABLE_NAME
+		FROM information_schema.TABLES
+		WHERE TABLE_NAME LIKE CONCAT(#{tableName},'%')
+		AND TABLE_SCHEMA = 'pnmp'
+		ORDER BY TABLE_NAME ASC;
+	</select>
+
+	<select id="columnExisted" resultType="java.lang.Integer" parameterType="java.lang.String">
+		SELECT count( * )
+		FROM information_schema.columns
+		WHERE table_name = '${tableName}' AND column_name = '${columnName}'
+		AND TABLE_SCHEMA = 'pnmp'
+	</select>
+
+	<update id="addVarCharColumn">
+		ALTER TABLE ${tableName} ADD ${columnName} VARCHAR(255);
+	</update>
+
+	<update id="addBigVarCharColumn">
+		ALTER TABLE `${tableName}` ADD ${columnName} VARCHAR(2550);
+	</update>
+
+
+	<update id="addIntColumn">
+		ALTER TABLE `${tableName}` ADD ${columnName} int(11) DEFAULT NULL;
+	</update>
+
+</mapper>

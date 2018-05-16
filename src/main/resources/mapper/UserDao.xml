@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.actec.ms.dao.sys.UserDao">
+
+    <!-- 创建用户表 -->
+    <update id="createTable">
+		<![CDATA[
+            CREATE TABLE `user` (
+              `id` int(11) NOT NULL AUTO_INCREMENT,
+              `name` varchar(20) NOT NULL,
+              `password` varchar(20) DEFAULT NULL,
+              `sex` varchar(5) DEFAULT NULL,
+              `phone` varchar(20) DEFAULT NULL,
+              `status` int(11) DEFAULT '1',
+              PRIMARY KEY (`id`),
+              UNIQUE KEY `name` (`name`)
+            ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+		]]>
+	</update>
+
+    <!-- 初始化用户表 -->
+    <update id="initTable">
+		<![CDATA[
+            INSERT INTO `user` VALUES ('1', 'admin', 'admin', '男', '028-123456', '1');
+            INSERT INTO `user` VALUES ('2', '123456', 'admin', '女', '123', '1');
+            INSERT INTO `user` VALUES ('3', '123456', '123456', '男', '13408504490', '1');
+		]]>
+	</update>
+
+
+    <select id="login" resultType="com.actec.ms.vo.sys.User">
+        SELECT * FROM user where name = #{name} and password = #{pwd}
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.actec.ms.dao.sys.ResourceDao">
+    <select id="list" resultType="com.actec.ms.vo.sys.Resource">
+        SELECT r.id, r.name FROM resource r LEFT JOIN user_resource ur
+        ON r.id = ur.resource_id
+        WHERE ur.user_id = #{userId} and r.status = 1
+    </select>
+
+    <select id="listAllName" resultType="java.lang.String">
+        SELECT r.name FROM resource r;
+    </select>
+
+    <select id="listName" resultType="java.lang.String">
+        SELECT r.name FROM resource r
+        LEFT JOIN user_resource ur
+        ON r.id = ur.resource_id WHERE ur.user_id = #{userId} AND r.status = 1
+    </select>
+
+    <select id="findIdByUrl" resultType="java.lang.Integer">
+        SELECT id FROM resource WHERE status = 1 AND url = #{url} AND (method = #{method} OR method = "ALL")
+    </select>
+
+    <insert id="addAuth">
+        INSERT INTO user_resource (user_id, resource_id) VALUES (#{userId}, #{resourceId});
+    </insert>
+
+    <delete id="deleteAuth">
+        DELETE FROM user_resource WHERE user_id = #{userId} AND resource_id = #{resourceId};
+    </delete>
+
+    <select id="userResourceCount" resultType="java.lang.Integer">
+        SELECT COUNT(id) FROM user_resource WHERE user_id = #{userId} AND resource_id = #{resourceId};
+    </select>
+
+</mapper>
