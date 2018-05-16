@@ -1,7 +1,7 @@
 package com.actec.pnmp.dao;
 
 
-import com.actec.pnmp.bean.sys.User;
+import com.actec.pnmp.entity.sys.User;
 import com.actec.pnmp.utils.CommonMapper;
 
 import java.util.List;

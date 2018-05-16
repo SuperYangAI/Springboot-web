@@ -1,9 +1,9 @@
 /**
  *
  */
-package com.actec.pnmp.bean;
+package com.actec.pnmp.entity;
 
-import com.actec.pnmp.bean.sys.User;
+import com.actec.pnmp.entity.sys.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;

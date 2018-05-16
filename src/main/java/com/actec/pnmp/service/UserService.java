@@ -1,6 +1,6 @@
 package com.actec.pnmp.service;
 
-import com.actec.pnmp.bean.sys.User;
+import com.actec.pnmp.entity.sys.User;
 import com.actec.pnmp.dao.UserDao;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;

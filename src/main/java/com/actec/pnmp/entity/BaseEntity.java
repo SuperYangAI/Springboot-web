@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.actec.pnmp.bean;
+package com.actec.pnmp.entity;
 
 
 import javax.persistence.*;

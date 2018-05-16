@@ -1,6 +1,6 @@
-package com.actec.pnmp.bean.sys;
+package com.actec.pnmp.entity.sys;
 
-import com.actec.pnmp.bean.DataEntity;
+import com.actec.pnmp.entity.DataEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Table;

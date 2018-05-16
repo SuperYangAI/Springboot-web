@@ -1,14 +1,12 @@
 package com.actec.pnmp.controller;
 
-import com.actec.pnmp.bean.sys.User;
+import com.actec.pnmp.entity.sys.User;
 import com.actec.pnmp.service.UserService;
 import com.actec.pnmp.utils.MD5Util;
 import com.github.pagehelper.Page;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;

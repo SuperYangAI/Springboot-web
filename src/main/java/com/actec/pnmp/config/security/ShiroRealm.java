@@ -1,6 +1,6 @@
 package com.actec.pnmp.config.security;
 
-import com.actec.pnmp.bean.sys.User;
+import com.actec.pnmp.entity.sys.User;
 import com.actec.pnmp.dao.UserDao;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;

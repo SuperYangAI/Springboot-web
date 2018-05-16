@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.actec.pnmp.dao.UserDao">
-    <resultMap id="userMap" type="com.actec.pnmp.bean.sys.User">
+    <resultMap id="userMap" type="com.actec.pnmp.entity.sys.User">
 		<id property="id" column="id"/>
 		<result property="userCode" column="user_code"/>
 		<result property="userName" column="user_name"/>
@@ -52,7 +52,7 @@
 		select * from sys_user where user_name= #{userName}
 	</select>
 
-	<insert id="create" parameterType="com.actec.pnmp.bean.sys.User">
+	<insert id="create" parameterType="com.actec.pnmp.entity.sys.User">
         <selectKey resultType="int"  order="AFTER" keyProperty="id" >
 			SELECT LAST_INSERT_ID()
 		</selectKey>
@@ -85,7 +85,7 @@
 		)
     </insert>
     
-    <update id="update" parameterType="com.actec.pnmp.bean.sys.User">
+    <update id="update" parameterType="com.actec.pnmp.entity.sys.User">
 		UPDATE sys_user SET
 			user_code = #{userCode},
 			user_name = #{userName},
