@@ -11,7 +11,11 @@ spring:
   flyway:
     locations: classpath:/dbmigration
     baseline-on-migrate: true
-
+#mybatis:
+#   mapper-locations: classpath*:mapper/*Dao.xml
+#   type-aliases-package: com.actec.ms.dao
+#   configuration:
+#       map-underscore-to-camel-case: true
 logging:
   config : classpath:logback-boot.xml
 

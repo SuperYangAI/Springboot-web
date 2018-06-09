@@ -7,6 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -20,7 +21,7 @@ public abstract class AbstractService<T> {
         this.dao = dao;
     }
 
-    public RestResult add(T entity) {
+    public RestResult add(HttpServletRequest request, T entity) {
         RestResult restResult;
         try {
             dao.insertSelective(entity);
@@ -32,7 +33,7 @@ public abstract class AbstractService<T> {
         return restResult;
     }
 
-    public RestResult update(T entity){
+    public RestResult update(HttpServletRequest request, T entity){
         RestResult restResult;
         try {
             dao.updateByPrimaryKey(entity);
@@ -44,7 +45,7 @@ public abstract class AbstractService<T> {
         return restResult;
     }
 
-    public RestResult delete(int id) {
+    public RestResult delete(HttpServletRequest request, int id) {
         RestResult restResult;
         try {
             dao.deleteByPrimaryKey(id);

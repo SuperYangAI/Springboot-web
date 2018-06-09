@@ -79,6 +79,7 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
                 claims = JWTUtil.parseJWT(auth);
                 if (claims != null) {
                     int userId = Integer.parseInt(claims.get("userId").toString());
+                    request.setAttribute("userId", userId);
                     if(User.isAdmin(userId))
                         return true;
                     if(AuthorityType.requireAdmin(authority) && !User.isAdmin(userId))

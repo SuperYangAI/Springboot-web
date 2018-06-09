@@ -6,6 +6,7 @@ import com.actec.ms.vo.Page;
 import com.actec.ms.vo.RestResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
@@ -26,18 +27,18 @@ public  class AbstractController<T> {
     }
 
     @PostMapping
-    public RestResult add(@RequestBody T pojo) {
-        return service.add(pojo);
+    public RestResult add(HttpServletRequest request, @RequestBody T pojo) {
+        return service.add(request, pojo);
     }
 
     @PutMapping
-    public RestResult update(@RequestBody T pojo) {
-        return service.update(pojo);
+    public RestResult update(HttpServletRequest request, @RequestBody T pojo) {
+        return service.update(request, pojo);
     }
 
     @DeleteMapping("/{id}")
-    public RestResult delete(@PathVariable("id") int id) {
-        return service.delete(id);
+    public RestResult delete(HttpServletRequest request, @PathVariable("id") int id) {
+        return service.delete(request, id);
     }
 
     @GetMapping("/{id}")
